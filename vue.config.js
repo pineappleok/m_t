@@ -55,8 +55,20 @@ module.exports = {
     },
     // 打包为生产环境时不生成map.js文件
     productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
+    /* css: {
+    }, */
     css: {
-        sourceMap: false
+        sourceMap: false,
+        loaderOptions: {
+            stylus: {
+                modifyVars: {
+                    red: '#03a9f4',
+                    blue: '#3eaf7c',
+                    orange: '#f08d49',
+                    'text-color': '#111'
+                }
+            }
+        }
     },
 
     devServer: {
