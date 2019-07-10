@@ -19,15 +19,19 @@
             :min-date="minDate"
             :max-date="maxDate"
         />
+        <div style="height: 200px;">
+            <gd-map></gd-map>
+        </div>
     </div>
 </template>
 <script>
 import Lang from "components/lang";
+import GdMap from "components/map";
 import { showLoading,showToast } from "utils/toast";
 // import { Toast } from "vant";
 export default {
   name: "home",
-  components:{Lang},
+  components:{Lang,GdMap},
   data () {
     return {
         minHour: 10,
