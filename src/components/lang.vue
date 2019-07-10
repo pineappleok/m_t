@@ -1,45 +1,33 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <button @click="cn">切换中文</button>
-    <button @click="en">切换英文</button>
-    <!-- vant组件 -->
-    <van-datetime-picker
-        v-model="currentDate"
-        type="datetime"
-        :min-date="minDate"
-        :max-date="maxDate"
-    />
+    <van-button type="default" size="mini" @click="cn">中文</van-button>
+    <van-button type="primary" size="mini" @click="en">EN</van-button>
   </div>
 </template>
  
 <script>
 export default {
-  name: 'lang',
-  props: {
-    msg: String
+  name: "lang",
+  data() {
+    return {
+    };
   },
-  data(){
-    return{
-      minHour: 10,
-       maxHour: 20,
-       minDate: new Date(),
-       maxDate: new Date(2019, 10, 1),
-       currentDate: new Date()
-    }
-  },
-  methods:{
-    cn(){
-      this.$i18n.locale='zhCHS'
-      this.$Local('zhCHS')
+  methods: {
+    /**
+     * 切换语言
+     */
+    cn() {
+        // 语言包中的语言
+      this.$i18n.locale = "zh-CN";
+        //   更改组件语言
+      this.$Local("zhCHS");
     },
-    en(){
-      this.$i18n.locale='en'
-      this.$Local('en')
+    en() {
+      this.$i18n.locale = "en-US";
+      this.$Local("en");
     }
-  },
-}
+  }
+};
 </script>
 <style>
-
 </style>
