@@ -23,7 +23,6 @@ const router = new Router({
         return { x: 0, y: 0 }
     }
 })
-// 登陆
 /* router.beforeEach((to, from, next) => {
 
 }) */

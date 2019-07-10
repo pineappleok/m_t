@@ -33,6 +33,7 @@ module.exports = {
             .set('utils', resolve('src/utils'))
             .set('filter', resolve('src/filter'))
 
+        // 后缀扩展
         config.resolve.extensions
             .add('.js')
             .add('.vue')

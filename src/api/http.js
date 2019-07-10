@@ -1,4 +1,4 @@
-import { getToken } from 'utils/auth'
+// import { getToken } from 'utils/auth'
 import { showLoading, showToast} from 'utils/toast'
 import axios from 'axios'
 
@@ -11,7 +11,7 @@ const http = axios.create({
 //添加请求拦截器
 http.interceptors.request.use((request)=>{
     //给所有请求添加自定义header
-    request.headers["Authorization"] = getToken()
+    // request.headers["Authorization"] = getToken()
       //打印出请求体
       //终止请求
       //var err=new Error("xxx")
