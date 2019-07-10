@@ -1,5 +1,5 @@
 import { getToken } from 'utils/auth'
-import { showLoading, showToast} from 'utils/popup'
+import { showLoading, showToast} from 'utils/toast'
 import axios from 'axios'
 
 const http = axios.create({
@@ -33,7 +33,7 @@ http.interceptors.response.use(
     (error) => {
         showLoading()
         if (error.response) {
-            if (error.response.status === 401 || error.response.status === 403) {
+            if (error.response.status === 400 || error.response.status === 401 || error.response.status === 403) {
                 showToast(error.response.data.msg)
             }
             if (error.response.status === 500) {

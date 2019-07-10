@@ -35,6 +35,9 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Vant);
 
+import { Toast } from 'vant';
+Vue.use(Toast);
+
 /* 国际化 */
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
@@ -48,9 +51,8 @@ const i18n = new VueI18n({
 })
 // locale.i18n((key, value) => i18n.t(key, value)) //方便element使用，其内部封装也是采用的i18n
 /*vue上挂在vant i18n方法*/
-import { Locals } from './assets/lang/vantLocal.js'
+import { Locals } from 'assets/lang/vantLocal.js'
 Vue.prototype.$Local = Locals
-
 
 Vue.config.productionTip = false
 new Vue({

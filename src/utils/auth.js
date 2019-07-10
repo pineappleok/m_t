@@ -1,7 +1,6 @@
 // 处理token
 import Cookies from 'js-cookie'
-// import { showToast } from './popup'
-// const TokenKey = 'access-token'
+
 const TokenKey = 'token'
 
 export function getToken() {

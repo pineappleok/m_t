@@ -1,19 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import _import from "utils/import";
+import _import from "./import";
 Vue.use(Router)
 
 const router = new Router({
     routes: [
         {
             path: '/',
-            name: 'home',
-            component: _import('home/index')
+            direct:'home',
+            component: _import('home/index'),
+            meta:{keepAlive:true}
         },
         {
             path: '/home',
             name: 'home',
-            component: _import('home/index')
+            component: _import('home/index'),
+            meta:{keepAlive:true}
         },
         
     ],
@@ -21,4 +23,8 @@ const router = new Router({
         return { x: 0, y: 0 }
     }
 })
+// 登陆
+/* router.beforeEach((to, from, next) => {
+
+}) */
 export default router

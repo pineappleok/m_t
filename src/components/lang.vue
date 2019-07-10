@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="lang">
     <van-button type="default" size="mini" @click="cn">中文</van-button>
     <van-button type="primary" size="mini" @click="en">EN</van-button>
   </div>

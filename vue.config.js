@@ -22,6 +22,7 @@ module.exports = {
         }
     },
     chainWebpack: config => {
+        // 为添加的文件取别名
         config.resolve.alias
             .set('vue$', 'vue/dist/vue.esm.js')
             .set('@', resolve('src'))
@@ -72,9 +73,9 @@ module.exports = {
     },
 
     devServer: {
-        // open:true,
+        // open: process.platform === 'darwin',
         host: "localhost",
-        port: 8089,
+        port: 8888,
         https: false,
         hotOnly: false,
         // 当没有需要代理的内容时 需将其注释

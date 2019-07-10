@@ -1,6 +1,9 @@
 <template>
     <div class="app">
-        <router-view/>
+        <keep-alive v-if="$route.meta.keepAlive">
+            <router-view/>
+        </keep-alive>
+        <router-view v-else/>
     </div>
 </template>
 <script>
@@ -15,5 +18,6 @@ export default {
 }
 </script>
 <style lang="stylus">
+// 引入全局styl
 @import './assets/css/index.styl'
 </style>
