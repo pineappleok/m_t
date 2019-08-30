@@ -19,5 +19,6 @@ export default {
 </script>
 <style lang="stylus">
 // 引入全局styl
-@import './assets/css/index.styl'
+    // @import './assets/css/index.styl'
+    // @import './assets/css/mixin.styl'
 </style>

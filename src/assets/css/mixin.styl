@@ -1,7 +1,7 @@
 /* $fontSizeDefault=25;
 $fontSize1=26; */
 
-
+// 变量
 $navColor = #049cff
 $fontColor1 = #999999
 $fontColor2 = #666666
@@ -12,6 +12,29 @@ $borderColor1 = #e6e6e6
 /* $onePx: 1;
 $onePx: 36;
 $onePx: 40; */
+
+// 混入
+
+w(w)
+    width (w)px
+
+h(h)
+    height (h)px
+
+flex(direction,content,items)
+    display flex
+    flex-direction direction
+    justify-content content
+    align-items items
+
+p-c()
+    position absolute
+    left 50%
+    top 50%
+    transform translate(-50%,-50%)
+
+
+
 
 r($px)
   ($px/2/$fontSizeDefault)rem;

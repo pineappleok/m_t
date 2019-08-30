@@ -22,6 +22,9 @@
         <div style="height: 200px;">
             <gd-map></gd-map>
         </div>
+        <div class="parent">爸爸
+            <div class="child">儿子</div>
+        </div>
     </div>
 </template>
 <script>
@@ -54,4 +57,13 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+// @import '../../assets/css/index.styl'
+    .parent
+        h(200)
+        position relative
+        .child
+            h(50)
+            p-c()
+        
+
 </style>

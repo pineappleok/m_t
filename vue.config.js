@@ -1,12 +1,21 @@
 // 配置文件
 const path = require('path')
-
+const isProduction = process.env.NODE_ENV === 'production' ? true : false
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 function resolve (dir) {
     return path.join(__dirname, dir)
 }
-
+function addStyleResource(rule) {
+    rule.use('style-resource')
+        .loader('style-resources-loader')
+        .options({
+            patterns: [
+                path.resolve(__dirname, './src/assets/css/index.styl'),
+                path.resolve(__dirname, './src/assets/css/mixin.styl'),
+            ],
+        })
+}
 module.exports = {
     publicPath: '/',
     baseUrl: process.env.baseUrl,
@@ -15,13 +24,15 @@ module.exports = {
     lintOnSave: true,
 
     configureWebpack: config => {
-        if (process.env.NODE_ENV === 'production') {
+        if (isProduction) {
             // 为生产环境修改配置...
         } else {
             // 为开发环境修改配置...
         }
     },
     chainWebpack: config => {
+        const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+        types.forEach(type => addStyleResource(config.module.rule('stylus').oneOf(type)))
         // 为添加的文件取别名
         config.resolve.alias
             .set('vue$', 'vue/dist/vue.esm.js')
@@ -51,19 +62,19 @@ module.exports = {
         //     .loader('url-loader')
         //     .end()
 
-        //config.when(process.env.NODE_ENV === 'production', config =>
+        //config.when(isProduction, config =>
         //  config.plugin('webpack-bundle-analyzer').use(BundleAnalyzerPlugin)
         //)
     },
     // 打包为生产环境时不生成map.js文件
-    productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
+    productionSourceMap: !isProduction,
     /* css: {
     }, */
     css: {
         sourceMap: false,
         loaderOptions: {
             stylus: {
-                modifyVars: {
+                globalVars: {
                     red: '#03a9f4',
                     blue: '#3eaf7c',
                     orange: '#f08d49',

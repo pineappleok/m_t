@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
+import './assets/css/index.styl'
+import './assets/css/mixin.styl'
 // 引入移动设备调试工具
 /* import vConsole from '@/utils/vconsole'
 Vue.use(vConsole) */
