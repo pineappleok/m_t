@@ -6,18 +6,19 @@ const isProduction = process.env.NODE_ENV === 'production' ? true : false
 function resolve (dir) {
     return path.join(__dirname, dir)
 }
+// css预处理 stylus自动化导入
+// 没起作用，待解决
 function addStyleResource(rule) {
     rule.use('style-resource')
         .loader('style-resources-loader')
         .options({
             patterns: [
                 path.resolve(__dirname, './src/assets/css/index.styl'),
-                path.resolve(__dirname, './src/assets/css/mixin.styl'),
             ],
         })
 }
 module.exports = {
-    publicPath: '/',
+    publicPath: './',
     baseUrl: process.env.baseUrl,
     outputDir: process.env.outputDir,
     assetsDir: process.env.assetsDir,
@@ -77,8 +78,7 @@ module.exports = {
                 globalVars: {
                     red: '#03a9f4',
                     blue: '#3eaf7c',
-                    orange: '#f08d49',
-                    'text-color': '#111'
+                    orange: '#f08d49'
                 }
             }
         }

@@ -30,7 +30,7 @@
 <script>
 import Lang from "components/lang";
 import GdMap from "components/map";
-import { showLoading,showToast } from "utils/toast";
+import { showLoading } from "utils/toast";
 // import { Toast } from "vant";
 export default {
   name: "home",
@@ -57,13 +57,13 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-// @import '../../assets/css/index.styl'
-    .parent
-        h(200)
-        position relative
-        .child
-            h(50)
-            p-c()
+@import '../../assets/css/index.styl'
+.parent
+    h(200)
+    position relative
+    .child
+        h(50)
+        p-c()
         
 
 </style>

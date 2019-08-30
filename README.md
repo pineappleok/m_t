@@ -29,3 +29,6 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 # -
 # m_t
+
+ # package.josn -->  -max_old_space_size=4096  
+ # 解决内存溢出

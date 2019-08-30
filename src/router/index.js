@@ -36,7 +36,7 @@ const router = new Router({
 // 路由导航守卫
 router.beforeEach((to, from, next) => {
     // 登录权限
-    if (to.meta.requireAuth) { // 判断是否校验登录权限
+    /* if (to.meta.requireAuth) { // 判断是否校验登录权限
         if (!window.userName) { // 判断是否登录，根据实际业务处理
             next({
                 path: '/login',
@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) => {
             })
             return;
         }
-    }
+    } */
     // 路由发生变化修改页面title
     if (to.meta.title) {
         document.title = to.meta.title
