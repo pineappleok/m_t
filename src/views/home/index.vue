@@ -31,7 +31,7 @@
 import Lang from "components/lang";
 import GdMap from "components/map";
 import { showLoading } from "utils/toast";
-// import { Toast } from "vant";
+import { publish } from "api/";
 export default {
   name: "home",
   components:{Lang,GdMap},
@@ -44,6 +44,9 @@ export default {
         currentDate: new Date(),
         show:false
     };
+  },
+  mounted(){
+      publish()
   },
   methods:{
       showLoading(){
