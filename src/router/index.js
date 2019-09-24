@@ -25,6 +25,15 @@ const router = new Router({
                 keepAlive: true
             }
         },
+        {
+            path: '/cart',
+            name: 'cart',
+            component: _import('cart/index'),
+            meta: {
+                title: '购物车',
+                requireAuth: true //登陆权限
+            }
+        },
         
     ],
     scrollBehavior(to, from, savedPosition) {

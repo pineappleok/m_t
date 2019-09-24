@@ -25,6 +25,7 @@
         <div class="parent">爸爸
             <div class="child">儿子</div>
         </div>
+        <router-link to="cart">去购物车</router-link>
     </div>
 </template>
 <script>
