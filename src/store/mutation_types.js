@@ -27,3 +27,12 @@ export const REMOVE_VISITED_TAG = 'REMOVE_VISITED_TAG'
 export const CLOSE_OTHER_TAG = 'CLOSE_OTHER_TAG'
 export const CLOSE_ALL_TAG = 'CLOSE_ALL_TAG'
 export const SET_VIEWS = 'SET_VIEWS'
+
+// cart
+export const ADD_AMOUNT = 'ADD_AMOUNT'
+export const REDUCE_AMOUNT = 'REDUCE_AMOUNT'
+export const CALC_PRICE = 'CALC_PRICE'
+export const TOTAL_PRICE = 'TOTAL_PRICE'
+export const CHECKED = 'CHECKED'
+export const DELETE_PROD = 'DELETE_PROD'
+

@@ -33,6 +33,8 @@ import Lang from "components/lang";
 import GdMap from "components/map";
 import { showLoading } from "utils/toast";
 import { publish } from "api/";
+import { prod } from "assets/js/prod";
+import localStorage from "utils/storage";
 export default {
   name: "home",
   components:{Lang,GdMap},
@@ -47,7 +49,8 @@ export default {
     };
   },
   mounted(){
-      publish()
+    //   publish()
+    localStorage.set('productor',prod())
   },
   methods:{
       showLoading(){

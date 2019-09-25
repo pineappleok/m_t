@@ -2,33 +2,33 @@
 const localStorage = window.localStorage
 
 function set(key, value) {
-  if (typeof value === 'object') {
-    value = JSON.stringify(value)
-  }
-  localStorage.setItem(key, value)
+    if (typeof value === 'object') {
+        value = JSON.stringify(value)
+    }
+    localStorage.setItem(key, value)
 }
 
 function get(key) {
-  const value = localStorage.getItem(key) || ''
+    const value = localStorage.getItem(key) || ''
 
-  try {
-    return JSON.parse(value)
-  } catch (e) {
-    return value
-  }
+    try {
+        return JSON.parse(value)
+    } catch (e) {
+        return value
+    }
 }
 
 function remove(key) {
-  localStorage.removeItem(key)
+    localStorage.removeItem(key)
 }
 
-function clear(){
-  localStorage.clear()
+function clear() {
+    localStorage.clear()
 }
 
 export default {
-  set,
-  get,
-  remove,
-  clear
+    set,
+    get,
+    remove,
+    clear
 }

@@ -4,7 +4,7 @@ const user = {
     state:{
         token:''
     },
-    mutatios:{
+    mutations:{
         [types.SET_TOKEN]: (state,token) => {
             state.token = token
         }

@@ -1,51 +1,54 @@
 <template>
     <div class="c-wrapper">
-        <van-checkbox v-model="checked" @change="selectProd(checked)"></van-checkbox>
-        <div>商品{{myOrder}}</div>
+        <van-checkbox v-model="productor.checked" @change="selectProd(productor.checked)"></van-checkbox>
+        <div>{{productor.name}}</div>
+        <div>￥{{productor.price}}</div>
         <div>
-            <van-stepper v-model="amount" @change="changeValHandler(amount)"/>
+            <van-stepper 
+                v-model="productor.amount" 
+                @change="changeValHandler(productor.amount,myIndex)"
+                @plus="plusHandler(myIndex)"
+                @minus="minusHandler(myIndex)"/>
         </div>
     </div>
 </template>
 <script>
+import { mapActions } from "vuex";
 import { showToast } from "utils/toast";
 export default {
     props:{
+        pord:{
+            type:Object
+        },
         order:{
             type:Number,
-            default:0
-        },
-        allChecked:{
-            type:Boolean,
-            default:false
         }
     },
     data () {
         return {
+            productor:this.pord,
             amount:1,
-            checked:false,
-            myOrder:this.order
+            myIndex:this.order
         };
     },
-    watch:{
-        'allChecked'(newVal){
-            if(newVal){
-                this.checked = true
-            }else{
-                this.checked = false
-            }
-        }
-    },
     methods:{
-        changeValHandler(amount){
+        ...mapActions(['increment','reduce','caluPrice','calcTotalPrice','checkAll']),
+        changeValHandler(amount,index){
             if(amount<=1){
                 showToast('宝贝不能再减少了哦~')
             }
+            this.caluPrice(index)
+            this.calcTotalPrice()
+        },
+        plusHandler(n){
+            this.increment(n)
+        },
+        minusHandler(m){
+            this.reduce(m)
         },
         selectProd(checked){
-            if(checked){
-                this.$emit('sendProdHandler')
-            }
+            this.calcTotalPrice()
+            this.checkAll()
         }   
     },
 }
@@ -54,5 +57,6 @@ export default {
     @import '../assets/css/index.styl'
     .c-wrapper
         flex(row,space-around,center)
+        font-size 14px
         margin 10px 0
 </style>
