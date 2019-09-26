@@ -53,7 +53,12 @@ export default {
   },
   methods: {
     ...mapActions(['deleteProds']),
-    onSubmit() {},
+    onSubmit() {
+        if(!this.productor.some(curr => curr.checked)){
+            showToast('您还没有选中的宝贝哦~')
+            return 
+        }
+    },
     checkAllProd() {
       this.allChecked = !this.allChecked;
       this.productor.forEach(curr => {

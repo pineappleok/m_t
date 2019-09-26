@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <nav-bar />
+    <nav-bar v-if="$route.name !== 'home'"/>
     <div v-if="$route.name === 'home'">
       <Lang></Lang>
 
