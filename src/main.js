@@ -20,7 +20,8 @@ VueAMap.initAMapApiLoader({
     key: '8120b756a0a5a0cc9a543412fc5b2613',
     // 插件集合
     plugin: ['AMap.Geocoder', 'AMap.Geolocation', 'AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor'],
-    uiVersion: '1.0' // 版本号
+    uiVersion: '1.0', // 版本号
+    v: '1.4.15'  //扩展更多高德原生方法
 });
 
 // 用于设置 rem 基准值

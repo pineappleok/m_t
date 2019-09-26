@@ -1,13 +1,5 @@
 <template>
   <section>
-    <van-nav-bar
-        title="购物车"
-        left-text="返回"
-        right-text="管理"
-        left-arrow
-        @click-left="onClickLeft"
-        @click-right="onClickRight"
-        />
     <div v-for="(item,index) in productor" :key="index">
       <cart-item :order="index" :pord="item"></cart-item>
     </div>
@@ -54,6 +46,11 @@ export default {
       this.allChecked = newVal;
     }
   },
+  mounted(){
+      this.$bus.$on('manageCart',() => {
+        this.manageFlag = true
+      })
+  },
   methods: {
     ...mapActions(['deleteProds']),
     onSubmit() {},
@@ -64,9 +61,9 @@ export default {
       });
     },
     onClickLeft() {
+        this.$router.go(-1)
     },
     onClickRight() {
-        this.manageFlag = true
     },
     deleteProd(){
         if(!this.productor.some(curr => curr.checked)){
@@ -75,11 +72,10 @@ export default {
         }
         const select_len = this.productor.filter(curr => curr.checked).length
         Dialog.confirm({
-            message: `确定删除这${select_len}件宝贝吗？`,
+            message: `确定要删除这${select_len}件宝贝吗？`,
             confirmButtonText:'删除'
         }).then(() => {// on confirm
             this.deleteProds()
-            console.log(this.productor)
             /* this.productor = this.productor.filter(curr => !curr.checked) */
             this.manageFlag = false
         }).catch(() => {// on cancel

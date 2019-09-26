@@ -1,15 +1,32 @@
 <template>
-    <div class=""></div>
+    <div class="">
+        <van-nav-bar 
+            :title="$route.meta.title" 
+            left-text="返回" 
+            left-arrow
+            @click-left="onClickLeft"
+            @click-right="onClickRight">
+            <!-- <van-icon name="search" slot="right" /> -->
+            <span v-if="$route.name==='cart'" name="search" slot="right" >管理</span>
+        </van-nav-bar>
+    </div>
 </template>
 <script>
 export default {
-    components:{},
     data () {
         return {
         };
     },
-    methods:{},
+    methods:{
+        onClickLeft() {
+            this.$router.go(-1)
+        },
+        onClickRight() {
+            this.$bus.$emit('manageCart')
+        },
+    },
 }
 </script>
 <style lang="stylus" scoped>
+
 </style>

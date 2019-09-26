@@ -88,7 +88,7 @@ module.exports = {
     devServer: {
         open: process.platform === 'darwin' ? 'Google Chrome' : '',
         // open: process.platform === 'darwin',
-        host: "localhost",
+        // host: "localhost",
         port: 8888,
         https: false,
         hotOnly: false,
