@@ -26,11 +26,11 @@
     </div>
     <transition :name="transitionName">
       <keep-alive v-if="$route.meta.keepAlive">
-        <router-view class="child-view" />
+        <router-view class="home-view" />
       </keep-alive>
     </transition>
     <transition :name="transitionName">
-      <router-view class="child-view" v-if="!$route.meta.keepAlive" />
+      <router-view class="home-view" v-if="!$route.meta.keepAlive" />
     </transition>
   </div>
 </template>
@@ -102,7 +102,7 @@ export default {
 }
 </style>
 <style lang="css" scoped>
-.child-view {
+.home-view {
   position: absolute;
   left: 0;
   top: 0;

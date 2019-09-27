@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="n-bar">
         <van-nav-bar 
             :title="$route.meta.title" 
             left-text="返回" 
@@ -28,5 +28,10 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-
+    .n-bar
+        position fixed
+        top 0
+        left 0
+        right 0
+        z-index 999
 </style>
