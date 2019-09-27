@@ -38,6 +38,24 @@ const router = new Router({
             },
             children:[
                 {
+                    path: 'prod',
+                    name: 'prod',
+                    component: _import('prod/index'),
+                    meta: {
+                        title: '商品列表',
+                        requireAuth: true //登陆权限
+                    }
+                },        
+                {
+                    path: 'detail',
+                    name: 'detail',
+                    component: _import('detail/index'),
+                    meta: {
+                        title: '商品详情',
+                        requireAuth: true //登陆权限
+                    }
+                },        
+                {
                     path: 'cart',
                     name: 'cart',
                     component: _import('cart/index'),
@@ -45,9 +63,36 @@ const router = new Router({
                         title: '购物车',
                         requireAuth: true //登陆权限
                     }
-                }        
+                },        
+                {
+                    path: 'account',
+                    name: 'account',
+                    component: _import('account/index'),
+                    meta: {
+                        title: '商品结算',
+                        requireAuth: true //登陆权限
+                    }
+                },        
+                {
+                    path: 'addressEditor',
+                    name: 'addressEditor',
+                    component: _import('addressEditor/index'),
+                    meta: {
+                        title: '地址编辑',
+                        requireAuth: true //登陆权限
+                    }
+                },        
             ]
-        },        
+        },    
+        {
+            path: '/user',
+            name: 'user',
+            component: _import('user/index'),
+            meta: {
+                title: '用户中心',
+                requireAuth: true //登陆权限
+            }
+        }    
     ],
     scrollBehavior(to, from, savedPosition) {
         setTimeout(() => {

@@ -1,12 +1,15 @@
 <template>
   <div class="wrapper">
-    <nav-bar v-if="$route.name !== 'home'"/>
+    <nav-bar v-if="$route.name !== 'home'" />
     <div v-if="$route.name === 'home'">
       <Lang></Lang>
 
       <van-button size="mini" @click="showLoading">加载</van-button>
       <van-button type="primary" size="mini" @click="showPopup">{{$t('m.download')}}</van-button>
-      <van-popup v-model="show" position="left" :style="{ width: '70%',height: '100%'}" />
+      <van-popup v-model="show" position="left" :style="{ width: '70%',height: '100%'}">
+        <van-button size="mini" @click="logout">注销</van-button>
+        <van-button size="mini" @click="editorAddress">编辑地址</van-button>
+      </van-popup>
       <van-datetime-picker
         v-model="currentDate"
         type="datetime"
@@ -17,20 +20,18 @@
         <gd-map></gd-map>
       </div>
       <van-uploader v-model="fileList" multiple />
-      <div class="parent">
-        爸爸
-        <div class="child">儿子</div>
-      </div>
-      <router-link :to="{name:'cart'}">去购物车</router-link>
+      <router-link :to="{name:'prod'}">商品列表</router-link>
+      <router-link :to="{name:'cart'}">购物车</router-link>
+      <router-link :to="{name:'user'}">用户中心</router-link>
     </div>
     <transition :name="transitionName">
       <keep-alive v-if="$route.meta.keepAlive">
         <router-view class="child-view" />
       </keep-alive>
     </transition>
-    <transition
-      :name="transitionName"
-    ><router-view class="child-view" v-if="!$route.meta.keepAlive"/></transition>
+    <transition :name="transitionName">
+      <router-view class="child-view" v-if="!$route.meta.keepAlive" />
+    </transition>
   </div>
 </template>
 <script>
@@ -76,6 +77,13 @@ export default {
     },
     showPopup() {
       this.show = true;
+    },
+    logout(){
+        localStorage.remove("user");
+        this.$router.push('/')
+    },
+    editorAddress(){
+        this.$router.push({name:'addressEditor'})
     }
   }
 };
@@ -93,7 +101,7 @@ export default {
   }
 }
 </style>
-<style>
+<style lang="css" scoped>
 .child-view {
   position: absolute;
   left: 0;
@@ -101,6 +109,7 @@ export default {
   width: 100%;
   height: 100%;
   transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+  margin-top: 46px;
 }
 .slide-left-enter,
 .slide-right-leave-active {

@@ -58,6 +58,7 @@ export default {
             showToast('您还没有选中的宝贝哦~')
             return 
         }
+        this.$router.push('account')
     },
     checkAllProd() {
       this.allChecked = !this.allChecked;
