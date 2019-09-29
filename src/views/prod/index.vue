@@ -12,20 +12,29 @@
                 :desc="item.desc"
                 :title="item.title"
                 :thumb="item.thumb"
-                @click="goDetail"
-              />
+                @click="goDetail">
+                <div slot="tags">
+                    <van-tag plain type="danger">hot</van-tag>
+                </div>
+                <div slot="footer">
+                    <van-button @click="addCart($event)" size="mini">添加到购物车</van-button>
+                </div>
+              </van-card>
             </van-pull-refresh>
           </van-list>
         </van-tab>
       </van-tabs>
       <go-top v-scroll-show:200="showObj" v-to-top :isShow="showObj.value"></go-top>
+      <Sku ref="skus"></Sku>
   </div>
 </template>
 <script>
 import GoTop from "../../directive/goTop/index.vue";
+import Sku from "components/sku";
 export default {
     components:{
-        GoTop
+        GoTop,
+        Sku
     },
   data() {
     return {
@@ -81,6 +90,11 @@ export default {
     goDetail() {
       this.$router.push("detail");
     },
+    addCart(e){
+        // 组织事件冒泡，避免跳转到商品详情
+        e.cancelBubble = true || e.stopPropagation()
+        this.$refs['skus'].showSku()
+    }
   }
 };
 </script>

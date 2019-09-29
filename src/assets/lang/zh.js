@@ -5,5 +5,7 @@ export const m = {
     myMusic: '我的音乐',
     friend: '朋友',
     musician: '音乐人',
-    download: '下载客户端'
+    download: '下载客户端',
+    nav: '导航',
+    set: '设置'
 }

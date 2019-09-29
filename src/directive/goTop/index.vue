@@ -22,11 +22,11 @@ export default {
     .fade-enter-active,
     .fade-leave
         opacity 1
-        transition all 0.5s ease cubic-bezier(1.0, 0.5, 0.8, 1.0)
+        transition all 0.5s liner cubic-bezier(1.0, 0.5, 0.8, 1.0)
     .fade-enter,
     .fade-leave-active
         opacity 0
-        transition all 0.5s ease cubic-bezier(1.0, 0.5, 0.8, 1.0)
+        transition all 0.5s liner cubic-bezier(1.0, 0.5, 0.8, 1.0)
 
     .btn
         wh(40,40)

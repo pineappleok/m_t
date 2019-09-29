@@ -5,5 +5,8 @@ export const m = {
     myMusic: 'My Music',//我的音乐
     friend: 'Friend',//朋友
     musician: 'Musician',//音乐人
-    download: 'Download'//下载客户端
+    download: 'Download',//下载客户端
+    nav: 'nav',
+    set: 'set'
+
 }

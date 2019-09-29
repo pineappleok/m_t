@@ -17,12 +17,13 @@
                 placeholder="请输入密码"
                 required
                 :error-message="errorPassword"
-                @blur="blurPassword"
-            />
+                @blur="blurPassword">
+                <van-button slot="button" type="default" size="mini" @click="forgetPassword">忘记密码</van-button>
+            </van-field>
         </van-cell-group>
         <div class="b-block">
-            <van-button type="info" size="small" @click="login">登陆</van-button>
-            <van-button type="default" size="small" @click="forgetPassword">忘记密码</van-button>
+            <van-button round  type="primary" size="small" @click="login">登陆</van-button>
+            <van-button round  type="info" size="small" @click="register">注册</van-button>
         </div>
     </div>
 </template>
@@ -62,7 +63,6 @@ export default {
               this.errorPassword = ''
           }
       },
-      forgetPassword(){},
       login(){
           if(!this.user.username){
               showToast('请输入用户名')
@@ -80,6 +80,12 @@ export default {
               this.$notify('登陆成功');
               this.$router.push('home')
           }
+      },
+      register(){
+          this.$router.push('register')
+      },
+      forgetPassword(){
+          this.$router.push('forgetPassword')
       }
   }
 }
@@ -88,5 +94,6 @@ export default {
 @import '../../assets/css/index.styl'
     .b-block
         flex(row,space-around,center)
+        margin-top 20px
 
 </style>

@@ -28,6 +28,26 @@ const router = new Router({
             }
         },
         {
+            path: '/register',
+            name: 'register',
+            component: _import('register/index'),
+            meta: {
+                title: '注册',
+                // requireAuth: true, //登陆权限
+                keepAlive: true
+            }
+        },
+        {
+            path: '/forgetPassword',
+            name: 'forgetPassword',
+            component: _import('forgetPassword/index'),
+            meta: {
+                title: '忘记密码',
+                // requireAuth: true, //登陆权限
+                keepAlive: true
+            }
+        },
+        {
             path: '/home',
             name: 'home',
             component: _import('home/index'),
@@ -79,6 +99,15 @@ const router = new Router({
                     component: _import('addressEditor/index'),
                     meta: {
                         title: '地址编辑',
+                        requireAuth: true //登陆权限
+                    }
+                },        
+                {
+                    path: 'logistics',
+                    name: 'logistics',
+                    component: _import('logistics/index'),
+                    meta: {
+                        title: '物流追踪',
                         requireAuth: true //登陆权限
                     }
                 },        

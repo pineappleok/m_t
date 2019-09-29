@@ -2,11 +2,28 @@
     <div id="app">
         <transition :name="transitionName">
             <keep-alive v-if="$route.meta.keepAlive">
-                <router-view class="child-view"/>
+                <van-skeleton
+                    title
+                    :row="20"
+                    :loading="loading"
+                >
+                <div>
+                    <router-view class="child-view"/>
+                </div>
+                </van-skeleton>
             </keep-alive>
         </transition>
         <transition :name="transitionName">
-            <router-view class="child-view" v-if="!$route.meta.keepAlive"/>
+            <van-skeleton
+                    v-if="!$route.meta.keepAlive"
+                    title
+                    :row="20"
+                    :loading="loading"
+                >
+                <div>
+                    <router-view class="child-view"/>
+                </div>
+            </van-skeleton>
         </transition>
     </div>
 </template>
@@ -15,7 +32,8 @@
 export default {
     data () {
         return {
-            transitionName:'slide-left'
+            transitionName:'slide-left',
+            loading: true
         };
     },
     watch:{
@@ -28,6 +46,7 @@ export default {
         }
     },
     mounted(){
+        this.loading = false
         this.$nextTick(() => {
         //   let scroll = new BScroll('.wrapper')
       //   publish()

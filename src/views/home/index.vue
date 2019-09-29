@@ -2,27 +2,27 @@
   <div class="wrapper">
     <nav-bar v-if="$route.name !== 'home'" />
     <div v-if="$route.name === 'home'">
-      <Lang></Lang>
-
-      <van-button size="mini" @click="showLoading">加载</van-button>
-      <van-button type="primary" size="mini" @click="showPopup">{{$t('m.download')}}</van-button>
+      <van-button type="primary" size="mini" @click="showPopup">{{$t('m.set')}}</van-button>
       <van-popup v-model="show" position="left" :style="{ width: '70%',height: '100%'}">
+        <Lang></Lang>
         <van-button size="mini" @click="logout">注销</van-button>
         <van-button size="mini" @click="editorAddress">编辑地址</van-button>
       </van-popup>
-      <van-datetime-picker
+      <!-- <van-datetime-picker
         v-model="currentDate"
         type="datetime"
         :min-date="minDate"
         :max-date="maxDate"
-      />
-      <div style="height: 200px;">
+      />-->
+      <!-- <div style="height: 200px;">
         <gd-map></gd-map>
-      </div>
-      <van-uploader v-model="fileList" multiple />
-      <router-link :to="{name:'prod'}">商品列表</router-link>
-      <router-link :to="{name:'cart'}">购物车</router-link>
-      <router-link :to="{name:'user'}">用户中心</router-link>
+      </div>-->
+      <!-- <van-uploader v-model="fileList" multiple /> -->
+      <van-cell-group>
+        <van-cell title="商品列表" is-link :to="{name:'prod'}" />
+        <van-cell title="购物车" is-link :to="{name:'cart'}" />
+        <van-cell title="用户中心" is-link :to="{name:'user'}" />
+      </van-cell-group>
     </div>
     <transition :name="transitionName">
       <keep-alive v-if="$route.meta.keepAlive">
@@ -38,7 +38,6 @@
 import NavBar from "components/navBar";
 import Lang from "components/lang";
 import GdMap from "components/map";
-import { showLoading } from "utils/toast";
 import { publish } from "api/";
 import { prod } from "assets/js/prod";
 import localStorage from "utils/storage";
@@ -48,11 +47,11 @@ export default {
   components: { Lang, GdMap, NavBar },
   data() {
     return {
-      minHour: 10,
+      /* minHour: 10,
       maxHour: 20,
       minDate: new Date(2017, 12, 1),
       maxDate: new Date(2050, 11, 31),
-      currentDate: new Date(),
+      currentDate: new Date(), */
       show: false,
       fileList: [],
       transitionName: "slide-left"
@@ -71,19 +70,15 @@ export default {
     localStorage.set("productor", prod());
   },
   methods: {
-    showLoading() {
-      showLoading("正在加载...");
-      // this.$toast.loading('正在加载...');
-    },
     showPopup() {
       this.show = true;
     },
-    logout(){
-        localStorage.remove("user");
-        this.$router.push('/')
+    logout() {
+      localStorage.remove("user");
+      this.$router.push("/");
     },
-    editorAddress(){
-        this.$router.push({name:'addressEditor'})
+    editorAddress() {
+      this.$router.push({ name: "addressEditor" });
     }
   }
 };

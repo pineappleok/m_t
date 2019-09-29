@@ -9,6 +9,10 @@ import 'assets/css/index.styl'
 // 引入全局指令
 import { directiveFun } from "./directive/goTop/index";
 directiveFun()
+
+import dayjs from 'dayjs' //全局引用dayjs
+window.dayjs = dayjs;
+
 // 
 var VueEventBus = require('vue-event-bus')
 Vue.use(VueEventBus)
@@ -19,7 +23,6 @@ Vue.use(VueAMap)
 // 初始化vue-amap
 VueAMap.initAMapApiLoader({
     // 高德的key
-    key: '8120b756a0a5a0cc9a543412fc5b2613',
     // 插件集合
     plugin: ['AMap.Geocoder', 'AMap.Geolocation', 'AMap.Autocomplete', 'AMap.PlaceSearch', 'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PolyEditor', 'AMap.CircleEditor'],
     uiVersion: '1.0', // 版本号
