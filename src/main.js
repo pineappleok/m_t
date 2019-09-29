@@ -6,7 +6,9 @@ import store from '@/store'
 /* import vConsole from '@/utils/vconsole'
 Vue.use(vConsole) */
 import 'assets/css/index.styl'
-
+// 引入全局指令
+import { directiveFun } from "./directive/goTop/index";
+directiveFun()
 // 
 var VueEventBus = require('vue-event-bus')
 Vue.use(VueEventBus)

@@ -1,6 +1,5 @@
 <template>
-  <div ref="container">
-    <van-sticky :container="container">
+  <div>
       <van-tabs>
         <van-tab v-for="index in 8" :title="'商品 ' + index" :key="index">
           <van-list v-model="loading" :finished="finished" finished-text="没有更多了:)" @load="onLoad">
@@ -19,11 +18,15 @@
           </van-list>
         </van-tab>
       </van-tabs>
-    </van-sticky>
+      <go-top v-scroll-show:200="showObj" v-to-top :isShow="showObj.value"></go-top>
   </div>
 </template>
 <script>
+import GoTop from "../../directive/goTop/index.vue";
 export default {
+    components:{
+        GoTop
+    },
   data() {
     return {
       list: [
@@ -39,13 +42,9 @@ export default {
       finished: false,
       isLoading: false,
       pageTop: 46,
-      container: null
+      container: null,
+      showObj:{value:false}
     };
-  },
-  mounted() {
-    this.container = this.$refs.container;
-    /* const block = document.querySelector(".van-tabs__wrap");
-    this.pageTop = this.getOffsetTop(block); */
   },
   methods: {
     getOffsetTop(obj) {
