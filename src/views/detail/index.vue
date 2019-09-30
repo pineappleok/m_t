@@ -32,9 +32,9 @@
       <van-cell title="线下门店" icon="location-o" is-link />
     </van-cell-group>
 
-    <van-cell-group>
-      <van-cell title="查看商品详情" is-link />
-    </van-cell-group>
+    <van-collapse v-model="activeNames">
+        <van-collapse-item title="查看商品详情" name="1">内容</van-collapse-item>
+    </van-collapse>
 
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" />
@@ -52,6 +52,7 @@ export default {
   components: { Sku },
   data() {
     return {
+      activeNames: ['1'],
       imgList: [
         {
           src:
