@@ -1,7 +1,14 @@
 <template>
   <div class="u-block">
       <div class="u-banner">
-        <img class="banner" src="https://img.yzcdn.cn/public_files/2017/10/23/8690bb321356070e0b8c4404d087f8fd.png" alt="">
+        <van-image
+            round
+            fit="cover"
+            width="1rem"
+            height="1rem"
+            src="https://img.yzcdn.cn/vant/cat.jpeg"
+        />
+        <span class="u-nickname">昵称</span>
       </div>
       <van-grid>
         <van-grid-item icon="pending-payment" text="待付款" />
@@ -40,9 +47,13 @@ export default {
     .u-banner
         width 100%
         h(180)
-    .banner
-        width 100%
-        height 100%
+        background linear-gradient(green,black)
+    .van-image
+        margin-top 10px
+        margin-left 10px
+    .u-nickname
+        font-size 14px
+        color white
     .u-block >>> .van-hairline--top::after
         border-top 0
     .u-block >>> .van-grid-item__content::after
