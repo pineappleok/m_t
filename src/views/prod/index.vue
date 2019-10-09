@@ -5,7 +5,7 @@
         v-model="searchValue"
         placeholder="请输入搜索关键词"
         show-action
-        @search="onSearch"
+        @search="onSearch(searchValue)"
         @cancel="onCancel"
       />
     </form>
@@ -41,16 +41,21 @@
 <script>
 import GoTop from "../../directive/goTop/index.vue";
 import Sku from "components/sku";
+// 吸顶
 window.addEventListener('scroll',function(){
-    let eleHeight = document.getElementById('search').offsetHeight,
+    let searchDoc = document.getElementById('search'),
         fixedDoc = document.querySelector('.van-tabs__wrap'),
         barDoc = document.querySelector('.n-bar')
-    if(this.scrollY > eleHeight){
-        fixedDoc.style.position = 'fixed'
-        fixedDoc.style.zIndex = '999'
-        fixedDoc.style.top = barDoc.offsetHeight + 'px'
-    }else{
-        fixedDoc.style.position = 'static'
+    if(searchDoc){
+        if(this.scrollY > searchDoc.offsetHeight){
+            fixedDoc.style.position = 'fixed'
+            fixedDoc.style.zIndex = '999'
+            fixedDoc.style.top = barDoc.offsetHeight + 'px'
+            fixedDoc.style.left = 0
+            fixedDoc.style.right = 0
+        }else{
+            fixedDoc.style.position = 'static'
+        }
     }
 })
 export default {
@@ -79,7 +84,9 @@ export default {
     };
   },
   methods: {
-    onSearch() {},
+    onSearch() {
+        this.list = this.list.slice(0,1)
+    },
     onCancel() {},
     getOffsetTop(obj) {
       var tmp = obj.offsetTop;
