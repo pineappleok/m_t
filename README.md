@@ -32,3 +32,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
  # package.josn -->  -max_old_space_size=4096  
  # 解决内存溢出
+此项目解决了vant组件国际化的问题；
